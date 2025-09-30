@@ -1,0 +1,12 @@
+*.o
+*.obj
+*.out
+*.elf
+*.exe
+*.map
+*.lst
+build/
+work/
+*.log
+.DS_Store
+Thumbs.db
