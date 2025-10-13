@@ -1,0 +1,9 @@
+; Branching with Y as the counter
+LDY #$08
+decrement:
+DEY
+STY $0200
+CPY #$03
+BNE decrement
+STY $0201
+BRK

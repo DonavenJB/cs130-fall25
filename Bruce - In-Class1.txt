@@ -1,0 +1,31 @@
+// CS130 Fall 2025 — Big Numbers & Overflow — Bruce, Donaven
+// zyBooks 2.21 ARM (LEGv8) Simulator
+
+// X4 = X0 + X1; if overflow then X12=999
+ADDS  X4,  X0,  X1          // set flags for X0+X1
+B.VS  add_ovf               // if overflow, mark
+B     add_done
+add_ovf:
+ADDI  X12, XZR, #999        // X12 = 999
+add_done:
+
+// X5 = X0 - X1; if overflow then X13=888
+SUBS  X5,  X0,  X1          // set flags for X0-X1
+B.VS  sub_ovf
+B     sub_done
+sub_ovf:
+ADDI  X13, XZR, #888        // X13 = 888
+sub_done:
+
+// X6 = X0 + X1 then X6 += X0; if either add overflows then X14=777
+ADDS  X6,  X0,  X1          // first add, sets flags
+B.VS  ovf3                  // if overflow on first then mark
+ADDS  X6,  X6,  X0          // second add, sets flags
+B.VS  ovf3                  // if overflow on second then mark
+B     no_ovf3
+ovf3:
+ADDI  X14, XZR, #777        // X14 = 777
+no_ovf3:
+
+halt:
+B     halt                  // stop

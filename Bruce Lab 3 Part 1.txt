@@ -1,0 +1,15 @@
+; Part 1: Step 6 starter program
+LDA #$c0
+TAX
+INX
+ADC #$c4
+BRK
+
+; Part 1: Variation (Y = low byte, A = carry)
+LDA #$c0
+CLC
+ADC #$c4
+TAY
+LDA #$00
+ROL A
+BRK
