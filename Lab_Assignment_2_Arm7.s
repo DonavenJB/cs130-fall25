@@ -9,7 +9,7 @@
 
 _start:
     @ local test: uncomment next line to preload R1; 
-    @ ldr  r1, =0x5751
+    ldr  r1, =0x5751
 
     uxth r0, r1            @ keep bits 15..0
     cmp  r0, #0            @ zero date?
